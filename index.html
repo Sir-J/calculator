@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Кредитный калькулятор</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="ui-select.js"></script>
+    <script src="calculator.js"></script>
+</head>
+
+<body>
+    <div class="external-container">
+        <div class="calculator-content">
+            <div class="row">
+                <label class="label-header">Кредитный калькулятор</label>
+            </div>
+            <div class="row">
+                <label class="row-label">Сумма кредита</label>
+                <div class="row-control">
+                    <input type="text" class="input-control" placeholder="0">
+                </div>
+                
+            </div>
+            <div class="row">
+                <label class="row-label">Процентная ставка</label>
+                <div class="row-control">
+                    <input type="text" class="input-control" placeholder="0">
+                </div>
+                <label class="row-label">%</label>
+            </div>
+            <div class="row">
+                <label class="row-label">Срок кредита</label>
+                <div class="row-control">
+                    <input type="text" class="input-control" placeholder="0">
+                </div>
+                <label class="row-label">месяцев</label>
+            </div>
+            <div class="row">
+                <label class="row-label">Вид платежа</label>
+                <label>
+              <input type="radio" name="type" class="radio-button" checked="checked">
+              <span class="radio-button-label">Аннуитетный</span>
+            </label>
+                <div class="row" style="display: block"></div>
+                <label class="control-offset">
+              <input type="radio" name="type" class="radio-button">
+              <span class="radio-button-label">Дифференцированный</span>
+            </label>
+            </div>
+            <div class="row">
+                <label class="row-label">Начало выплат</label>
+                <div class="row-control">
+                    <div id="months">                        
+                    </div>
+                </div>
+                <label class="row-label">месяцев</label>
+            </div>
+            <div class="row">
+                <div class="row-control control-offset">
+                    <button class="calc-button" type="submit">Рассчитать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
