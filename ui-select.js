@@ -4,13 +4,14 @@
 
         var settings = $.extend({
             selectedId: 0,
-            isOpen: false
+            isOpen: false,
+            hasScroll: false
         }, options);
 
         var content = `
                         <div class="ui-select__toggler">
                             <div class="ui-select__toggler__trigger">
-                                <span class="icon-font icon-select-control"></span>
+                                <div class="icon-font icon-select-control"></div>
                             </div>
                             <div class="ui-select__toggler__text">
                                 <span data-toggler-text data-fake-id></span>
@@ -18,7 +19,7 @@
                         </div>
                         <div class="ui-select__dropdown" tabindex="1" style="opacity: 1; transition: opacity 120ms;">
                             <div>
-                                <div class="ui-select__scrollable-container has-scrollbar ui-scrollbar">
+                                <div class="ui-select__scrollable-container ui-scrollbar">
                                     <div class="ui-select__scrollable" tabindex="0" style="margin-right: -17px;">
                                         <div class="ui-select__list"> </div>
                                     </div>                                    
@@ -29,6 +30,10 @@
         var itemLine = '<div class="ui-select__item" data-fake-id="{id}">{name}</div>';
 
         $this.addClass('ui-select ui-select--block').html(content);
+
+        if (settings.hasScroll) {
+            $this.find('.ui-select__scrollable-container').addClass('has-scrollbar');
+        }
 
         for (var idx in settings.data) {
             $this
@@ -52,6 +57,9 @@
                 $this.find('.ui-select__dropdown').hide();
             } else {
                 $this.find('.ui-select__dropdown').show();
+                if (settings.hasScroll) {
+                    $this.find('.ui-select__scrollable-container').scrollTo('.ui-select__item--selected');
+                }
             }
             settings.isOpen = settings.isOpen ? false : true;
         });

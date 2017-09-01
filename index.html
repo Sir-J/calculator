@@ -5,12 +5,16 @@
     <title>Кредитный калькулятор</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="ui-select.css">
+    <link rel="stylesheet" href="popover.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="scrollTo.js"></script>
     <script src="ui-select.js"></script>
     <script src="calculator.js"></script>
     <base href="https://sir-j.github.io/calculator/">
-    
+
 </head>
 
 <body>
@@ -24,7 +28,9 @@
                 <div class="row-control">
                     <input type="text" class="input-control" placeholder="0">
                 </div>
-                
+                <div class="row-control">
+                    <div id="currency"> </div>
+                </div>
             </div>
             <div class="row">
                 <label class="row-label">Процентная ставка</label>
@@ -46,19 +52,23 @@
               <input type="radio" name="type" class="radio-button" checked="checked">
               <span class="radio-button-label">Аннуитетный</span>
             </label>
-                <div class="row" style="display: block"></div>
+            <span class="icon-info payment-type" data-trigger="hover" data-placement="top" 
+                data-content="При аннуитетном порядке погашения ежемесячные выплаты равны в течение всего срока кредитования"></span>
+            <div class="row" style="display: block"></div>
                 <label class="control-offset">
               <input type="radio" name="type" class="radio-button">
-              <span class="radio-button-label">Дифференцированный</span>
+              <span class="radio-button-label">Дифференцированный</span>              
             </label>
+                <span class="icon-info payment-type" data-trigger="hover" data-placement="top" data-content="При дифференцированном порядке погашения ежемесячные выплаты уменьшаются в течение всего срока кредитования"></span>
             </div>
             <div class="row">
                 <label class="row-label">Начало выплат</label>
                 <div class="row-control">
-                    <div id="months">                        
-                    </div>
+                    <div id="months"> </div>
                 </div>
-                <label class="row-label">месяцев</label>
+                <div class="row-control">
+                    <div id="years"> </div>
+                </div>
             </div>
             <div class="row">
                 <div class="row-control control-offset">
