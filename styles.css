@@ -85,9 +85,13 @@
       display: none;
   }
   
-  /* input[type="radio"].radio-button:checked + .radio-button-label::before {
-      background-color: #34495e;
-  } */
+  input[type="radio"].radio-button:checked + .radio-button-label::before {
+    background-color: #34495e;
+}
+input[type="radio"].radio-button + .radio-button-label:hover::before {
+    background-color: transparent;
+    border-color: #1abc9c;
+}
   
   input[type="radio"].radio-button + .radio-button-label::before {
       content: '';
@@ -99,12 +103,12 @@
       background-color: transparent;
       background-position: center;
       background-repeat: no-repeat;
-      border: 2px solid #CCCCCC;
+      border: 2px solid #34495e;
       border-radius: 50%;
   }
   
   input[type="radio"].radio-button:checked + .radio-button-label::after {
-      background-color: #CCCCCC;
+      background-color: #1abc9c;
   }
   
   input[type="radio"].radio-button + .radio-button-label::after {
