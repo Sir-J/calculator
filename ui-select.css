@@ -4,6 +4,7 @@
     width: 100%;
     vertical-align: middle;
     width:145px;
+    margin-top: -3px
 }
 
 .ui-select:first-of-type {
@@ -69,7 +70,7 @@
 
 .icon-font{
     background-image: url('icon-caret.png');
-    height: 16px;
+    height: 15px;
     width: 16px;
     margin: 6px;
 }
