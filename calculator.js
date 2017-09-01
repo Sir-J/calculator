@@ -116,15 +116,14 @@ $(document).ready(function () {
 
     $("#sum").keydown(function (e) {
         parseValue(e, regexNumber);
-    });
-
-    $("#sum").focus(function (e) {        
+    })
+    .focus(function (e) {        
         $("#sum").val($("#sum").val().replace(" ", ""));
-    });
-
-    $("#sum").blur(function (e) {        
+    })
+    .blur(function (e) {        
         $("#sum").val(thousand($("#sum").val().replace(" ", "")));
     });
+    
 
     $("#period").keydown(function (e) {
         parseValue(e, regexNumber);
