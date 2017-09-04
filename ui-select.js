@@ -1,7 +1,7 @@
 (function ($) {
 
     var methods = {
-        init: function (options) {            
+        init: function (options) {
 
             return this.each(function () {
                 var $this = $(this);
@@ -21,22 +21,22 @@
                 $this.data('uiSelect', settings);
 
                 var content = `<div class="ui-select__toggler">
-                                                        <div class="ui-select__toggler__trigger">
-                                                            <div class="icon-font icon-select-control"></div>
-                                                        </div>
-                                                        <div class="ui-select__toggler__text">
-                                                            <span data-toggler-text data-fake-id></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ui-select__dropdown" tabindex="1" style="opacity: 1; transition: opacity 120ms;">
-                                                        <div>
-                                                            <div class="ui-select__scrollable-container ui-scrollbar">
-                                                                <div class="ui-select__scrollable" tabindex="0" style="margin-right: -17px;">
-                                                                    <div class="ui-select__list"> </div>
-                                                                </div>                                    
-                                                            </div>
-                                                        </div>
-                                                    </div>`;
+                                <div class="ui-select__toggler__trigger">
+                                        <div class="icon-font icon-select-control"></div>
+                                    </div>
+                                    <div class="ui-select__toggler__text">
+                                        <span data-toggler-text data-fake-id></span>
+                                    </div>
+                                </div>
+                                <div class="ui-select__dropdown" tabindex="1" style="opacity: 1; transition: opacity 120ms;">
+                                    <div>
+                                        <div class="ui-select__scrollable-container ui-scrollbar">
+                                            <div class="ui-select__scrollable" tabindex="0" style="margin-right: -17px;">
+                                                <div class="ui-select__list"> </div>
+                                            </div>                                    
+                                        </div>
+                                    </div>
+                                </div>`;
                 var itemLine = '<div class="ui-select__item" data-fake-id="{id}">{name}</div>';
 
                 $this.addClass('ui-select ui-select--block').html(content);

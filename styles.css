@@ -153,10 +153,10 @@ input[type="radio"].radio-button + .radio-button-label:hover::before {
     cursor: pointer;
     outline: none;
     -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-appearance: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
     width: 235px;
     background-color: #3D8996;
     color: white;

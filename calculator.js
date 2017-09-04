@@ -83,7 +83,7 @@ $(document).ready(function () {
         data: years,
         selectedId: currentYear,
         hasScroll: false
-    });    
+    });
 
     $('.payment-type').popover();
 
@@ -104,34 +104,44 @@ $(document).ready(function () {
         if (next && !String(next).match(regex)) {
             event.preventDefault();
         }
-
-        if ($(e.target).hasClass('input-control_error')) {
-            $(e.target).removeClass('input-control_error');
-        }
     };
 
-    $('.radio-button').click(function(e){        
+    $('.radio-button').click(function (e) {
         calcValue = parseInt($(e.target).attr("value"));
     });
 
     $("#sum").keydown(function (e) {
         parseValue(e, regexNumber);
     })
-    .focus(function (e) {        
-        $("#sum").val($("#sum").val().replace(" ", ""));
-    })
-    .blur(function (e) {        
-        $("#sum").val(thousand($("#sum").val().replace(" ", "")));
-    });
-    
+        .on("input", function (e) {
+            if ($(e.target).hasClass('input-control_error')) {
+                $(e.target).removeClass('input-control_error');
+            }
+        })
+        .focus(function (e) {
+            $("#sum").val($("#sum").val().replace(" ", ""));
+        })
+        .blur(function (e) {
+            $("#sum").val(thousand($("#sum").val().replace(" ", "")));
+        });
 
     $("#period").keydown(function (e) {
         parseValue(e, regexNumber);
-    });
+    })
+        .on("input", function (e) {
+            if ($(e.target).hasClass('input-control_error')) {
+                $(e.target).removeClass('input-control_error');
+            }
+        });
 
     $("#percent").keydown(function (e) {
         parseValue(e, regexFloat);
-    });
+    })
+        .on("input", function (e) {
+            if ($(e.target).hasClass('input-control_error')) {
+                $(e.target).removeClass('input-control_error');
+            }
+        });
 
     $('.calc-button').click(function () {
         var valid = true;
@@ -169,21 +179,26 @@ $(document).ready(function () {
         var currency = $("#currencies").uiSelect("getValue");
         var month = $("#months").uiSelect("getValue");
         var year = $("#years").uiSelect("getValue");
-        if(calcValue == 0) { 
-            var monthPay = annuityPayment(sum, period, percent)
-            $(".month-pay").text( `${monthPay} ${currency.name}`);
-            $(".overpay").text( `${(monthPay * period)- sum}  ${currency.name}`);
-            $(".full-payments").text( `${(monthPay * period)} ${currency.name}`);
-        }else{
+        var monthPay = '';
+        var overpay = '';
+        var fullPayments = '';
+        if (calcValue == 0) {
+            var val = annuityPayment(sum, period, percent)
+            monthPay = `${val} ${currency.name}`;
+            overpay = `${(val * period) - sum}  ${currency.name}`;
+            fullPayments = `${(val * period)} ${currency.name}`;
+        } else {
             var payments = differentialPayment(sum, period, percent, year.id, month.id);
             var total = payments.reduce((a, b) => a + b, 0);
-            $(".month-pay").text( `${payments[0]} .... ${payments[1]} ${currency.name}`);
-            $(".overpay").text( `${total - sum}  ${currency.name}`);
-            $(".full-payments").text( `${total} ${currency.name}`);
+            monthPay = `${payments[0]} .... ${payments[1]} ${currency.name}`;
+            overpay = `${total - sum}  ${currency.name}`;
+            fullPayments = `${total} ${currency.name}`;
         }
-        
-        $(".end-pay").text( `01.${month.id + 1 < 10 ? '0' + (month.id + 1) : month.id + 1}.${year.id}`);
+        $(".month-pay").text(monthPay);
+        $(".overpay").text(overpay);
+        $(".full-payments").text(fullPayments);
+        $(".end-pay").text(`01.${month.id + 1 < 10 ? '0' + (month.id + 1) : month.id + 1}.${year.id}`);
 
-        $('.result-content').show();        
+        $('.result-content').show();
     });
 });
