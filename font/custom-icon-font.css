@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'custom-icon-fontregular';
+    src: url('font-webfont.eot');
+    src: url('font-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font-webfont.woff2') format('woff2'),
+         url('font-webfont.woff') format('woff'),
+         url('font-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.na {
+    font-family: 'custom-icon-fontregular';
+    display: inline-block;
+    font: normal normal normal;
+    font-style: normal;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.na-sm {
+    font-size: 18px;
+    vertical-align: -15%;
+  }
+  
+.na.na-info::before{
+    content: "i";
+    color: #068c98;
+    }
+.na.na-arrow::before{
+    content: "a";
+    margin: 0;
+    padding: 0;
+    vertical-align: 0;
+    }

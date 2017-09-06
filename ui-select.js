@@ -22,7 +22,7 @@
 
                 var content = `<div class="ui-select__toggler">
                                 <div class="ui-select__toggler__trigger">
-                                        <div class="icon-font icon-select-control"></div>
+                                        <div class="na na-sm na-arrow"></div>
                                     </div>
                                     <div class="ui-select__toggler__text">
                                         <span data-toggler-text data-fake-id></span>

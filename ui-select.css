@@ -28,7 +28,7 @@
 .ui-select__toggler__trigger {
     width: 28px;
     height: 28px;
-    line-height: 36px;
+    line-height: 28px;
     border-left: 1px solid;
     float: right;
     cursor: pointer;
@@ -36,6 +36,7 @@
     -webkit-transition: border .2s;
     transition: border .2s;
     text-align: center;
+    padding-left: 5%;
 }
 
 .ui-select__toggler__text {
@@ -66,13 +67,6 @@
     outline: none;
     z-index: 100;
     font-size: 16px;
-}
-
-.icon-font {
-    background-image: url('icon-caret.png');
-    height: 15px;
-    width: 16px;
-    margin: 6px;
 }
 
 .ui-select__scrollable-container {
