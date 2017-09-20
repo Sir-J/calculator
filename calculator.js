@@ -75,7 +75,7 @@ $(document).ready(function () {
 
     $('#months').uiSelect({
         data: months,
-        selectedId: 7,
+        selectedId: new Date().getMonth(),
         hasScroll: true
     });
 
@@ -144,6 +144,7 @@ $(document).ready(function () {
         });
 
     $('.calc-button').click(function () {
+        $('.result-content').hide();
         var valid = true;
         var sum = parseInt($("#sum").val().replace(" ", ""));
         if (!sum) {
@@ -179,6 +180,12 @@ $(document).ready(function () {
         var currency = $("#currencies").uiSelect("getValue");
         var month = $("#months").uiSelect("getValue");
         var year = $("#years").uiSelect("getValue");
+        var endYear = year.id + Math.floor(period / 12);
+        var endMonth = (month.id + 1) + (period - Math.floor(period / 12) * 12);
+        if(endMonth > 12){
+            endYear += 1;
+            endMonth -= 12;
+        }
         var monthPay = '';
         var overpay = '';
         var fullPayments = '';
@@ -187,17 +194,19 @@ $(document).ready(function () {
             monthPay = `${val} ${currency.name}`;
             overpay = `${(val * period) - sum}  ${currency.name}`;
             fullPayments = `${(val * period)} ${currency.name}`;
+            $('.payment-type-text').text('Ежемесячный платёж');
         } else {
             var payments = differentialPayment(sum, period, percent, year.id, month.id);
             var total = payments.reduce((a, b) => a + b, 0);
-            monthPay = `${payments[0]} .... ${payments[1]} ${currency.name}`;
+            monthPay = `${payments[0]} ${currency.name}`;
             overpay = `${total - sum}  ${currency.name}`;
             fullPayments = `${total} ${currency.name}`;
+            $('.payment-type-text').text('Размер первого платежа');
         }
         $(".month-pay").text(monthPay);
         $(".overpay").text(overpay);
         $(".full-payments").text(fullPayments);
-        $(".end-pay").text(`01.${month.id + 1 < 10 ? '0' + (month.id + 1) : month.id + 1}.${year.id}`);
+        $(".end-pay").text(`01.${endMonth < 10 ? '0' + (endMonth) : endMonth}.${endYear}`);
 
         $('.result-content').show();
     });
