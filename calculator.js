@@ -85,7 +85,25 @@ $(document).ready(function () {
         hasScroll: false
     });
 
-    $('.payment-type').popover();
+    var settingsAnnuity = {
+        trigger: 'hover',
+        content: '<p class="popover-content">При аннуитетном порядке погашения ежемесячные выплаты равны в течение всего срока кредитования</p>',
+        width: '300px',
+        multi: true,
+        closeable: false,
+        style: '',
+        delay: 150,
+        padding: true,
+        backdrop: false
+    };
+
+    var settingsDifferential = Object.assign({}, settingsAnnuity);
+    settingsDifferential.content = '<p class="popover-content">При дифференцированном порядке погашения ежемесячные выплаты уменьшаются в течение всего срока кредитования</>'
+
+    $('.payment-type.annuity').webuiPopover(settingsAnnuity);
+    $('.payment-type.differential').webuiPopover(settingsDifferential);
+
+    //$('.payment-type').popover();
 
     var parseValue = function (e, regex) {
         if (specialKeys.indexOf(event.key) !== -1) {
@@ -182,7 +200,7 @@ $(document).ready(function () {
         var year = $("#years").uiSelect("getValue");
         var endYear = year.id + Math.floor(period / 12);
         var endMonth = (month.id + 1) + (period - Math.floor(period / 12) * 12);
-        if(endMonth > 12){
+        if (endMonth > 12) {
             endYear += 1;
             endMonth -= 12;
         }
