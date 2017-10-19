@@ -1,0 +1,75 @@
+<div class="calculator-content">
+    <div class="row">
+        <label class="label-header">Кредитный калькулятор</label>
+    </div>
+    <div class="row">
+        <label class="row-label">Сумма кредита</label>
+        <div class="row-control">
+            <input type="text" class="input-control" placeholder="0" id="sum">
+        </div>
+        <div id="currencies"> </div>
+    </div>
+    <div class="row">
+        <label class="row-label">Процентная ставка</label>
+        <div class="row-control">
+            <input type="text" class="input-control" placeholder="0" id="percent">
+        </div>
+        <label class="row-label">%</label>
+    </div>
+    <div class="row">
+        <label class="row-label">Срок кредита</label>
+        <div class="row-control">
+            <input type="text" class="input-control" placeholder="0" id="period">
+        </div>
+        <label class="row-label">месяцев</label>
+    </div>
+    <div class="row">
+        <label class="row-label">Вид платежа</label>
+        <label>
+            <input type="radio" name="type" class="radio-button" checked="checked" value="0">
+            <span class="radio-button-label">Аннуитетный</span>
+        </label>
+        <span class="na na-sm na-info payment-type annuity" data-placement="top"></span>
+        <div class="row" style="display: block"></div>
+        <label class="control-offset">
+            <input type="radio" name="type" class="radio-button" value="1">
+            <span class="radio-button-label">Дифференцированный</span>
+        </label>
+        <span class="na na-sm na-info payment-type differential" data-placement="top"></span>
+    </div>
+    <div class="row">
+        <label class="row-label">Начало выплат</label>
+        <div class="row-control">
+            <div id="months"> </div>
+        </div>
+        <div class="row-control">
+            <div id="years"> </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row-control control-offset">
+            <button class="calc-button">Рассчитать</button>
+        </div>
+    </div>
+</div>
+<div class="result-content" style="display: none">
+    <div class="row">
+        <label class="label-header">Результат расчёта</label>
+    </div>
+    <div class="row">
+        <label class="row-label width-250 payment-type-text">Ежемесячный платёж</label>
+        <label class="row-label width-250 label-header month-pay"></label>
+    </div>
+    <div class="row">
+        <label class="row-label width-250">Переплата по кредиту</label>
+        <label class="row-label width-250 label-header overpay"></label>
+    </div>
+    <div class="row">
+        <label class="row-label width-250">Выплаты за весь срок кредита</label>
+        <label class="row-label width-250 label-header full-payments"></label>
+    </div>
+    <div class="row">
+        <label class="row-label width-250">Окончание выплат</label>
+        <label class="row-label width-250 label-header end-pay"></label>
+    </div>
+</div>
