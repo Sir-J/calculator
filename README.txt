@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="font/custom-icon-font.css"> // - указать путь до папки font
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> // - если отсутствует на сайте
-    <script src="popover.js"></script> // - если отсутствует на сайте
+    <script src="popover.js"></script>
     <script src="scrollTo.min.js"></script>
     <script src="ui-select.js"></script>
     <script src="calculator.js"></script>
