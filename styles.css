@@ -38,6 +38,10 @@
   .label-header {
     font-weight: bold;
   }
+
+  label {
+  	border-bottom: none;
+  }
   
   .row-label{
     display: inline-block;
