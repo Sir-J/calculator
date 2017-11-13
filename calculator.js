@@ -59,6 +59,8 @@ $(document).ready(function () {
     var years = [];
     var currentYear = new Date().getFullYear();
     var idx = 0;
+    var removeSpace = new RegExp(' ', 'g');
+
     while (idx < 5) {
         years.push({
             id: currentYear + idx,
@@ -110,7 +112,7 @@ $(document).ready(function () {
             return;
         }
         var position = e.target.selectionEnd;
-        const current = e.target.value.replace(" ", "");
+        const current = e.target.value.replace(removeSpace, "");
         var next = '';
         if (current.length > 0) {
             next = [current.slice(0, position), e.key, current.slice(position)].join('');
@@ -137,10 +139,10 @@ $(document).ready(function () {
             }
         })
         .focus(function (e) {
-            $("#sum").val($("#sum").val().replace(" ", ""));
+            $("#sum").val($("#sum").val().replace(removeSpace, ""));
         })
         .blur(function (e) {
-            $("#sum").val(thousand($("#sum").val().replace(" ", "")));
+            $("#sum").val(thousand($("#sum").val().replace(removeSpace, "")));
         });
 
     $("#period").keydown(function (e) {
@@ -163,13 +165,14 @@ $(document).ready(function () {
 
     $('.calc-button').click(function () {
         $('.result-content').hide();
-        var valid = true;
-        var sum = parseInt($("#sum").val().replace(" ", ""));
+        var valid = true;        
+                
+        var sum = parseInt($("#sum").val().replace(re, ""));
         if (!sum) {
             $("#sum").addClass("input-control_error");
             valid = false;
         }
-        var percent = parseFloat($("#percent").val().replace(" ", "").replace(',', '.'));
+        var percent = parseFloat($("#percent").val().replace(removeSpace, "").replace(',', '.'));
         if (!percent) {
             $("#percent").addClass("input-control_error");
             valid = false;
@@ -181,7 +184,7 @@ $(document).ready(function () {
             }
         }
 
-        var period = parseInt($("#period").val().replace(" ", ""));
+        var period = parseInt($("#period").val().replace(removeSpace, ""));
         if (!period) {
             $("#period").addClass("input-control_error");
             valid = false;
@@ -216,7 +219,7 @@ $(document).ready(function () {
         } else {
             var payments = differentialPayment(sum, period, percent, year.id, month.id);
             var total = payments.reduce((a, b) => a + b, 0);
-            monthPay = `${payments[0]} ${currency.name}`;
+            monthPay = `${payments[0]} .... ${payments[1]} ${currency.name}`;
             overpay = `${total - sum}  ${currency.name}`;
             fullPayments = `${total} ${currency.name}`;
             $('.payment-type-text').text('Размер первого платежа');
