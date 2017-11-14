@@ -167,7 +167,7 @@ $(document).ready(function () {
         $('.result-content').hide();
         var valid = true;        
                 
-        var sum = parseInt($("#sum").val().replace(re, ""));
+        var sum = parseInt($("#sum").val().replace(removeSpace, ""));
         if (!sum) {
             $("#sum").addClass("input-control_error");
             valid = false;
