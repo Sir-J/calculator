@@ -105,8 +105,6 @@ $(document).ready(function () {
     $('.payment-type.annuity').webuiPopover(settingsAnnuity);
     $('.payment-type.differential').webuiPopover(settingsDifferential);
 
-    //$('.payment-type').popover();
-
     var parseValue = function (e, regex) {
         if (specialKeys.indexOf(event.key) !== -1) {
             return;
@@ -115,7 +113,7 @@ $(document).ready(function () {
         const current = e.target.value.replace(removeSpace, "");
         var next = '';
         if (current.length > 0) {
-            next = [current.slice(0, position), e.key, current.slice(position)].join('');
+            next = [current.slice(0, e.target.selectionStart), e.key, current.slice(e.target.selectionEnd)].join('');
         }
         else {
             next = current.concat(e.key);
