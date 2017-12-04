@@ -3,7 +3,8 @@ function daysInMonth(year, monthNumber) {
 };
 
 function daysInYear(year) {
-    return daysInMonth(year, 1) === 28 ? 365 : 366;
+    // return daysInMonth(year, 1) === 28 ? 365 : 366;
+    return 365;
 }
 
 function monthPay(s, n) {
@@ -11,7 +12,8 @@ function monthPay(s, n) {
 }
 
 function percents(s, p, year, month) {
-    return s * (p / 100) * daysInMonth(year, month) / daysInYear(year);
+    //return s * (p / 100) * daysInMonth(year, month) / daysInYear(year);
+    return s * (p / 100) * 30 / daysInYear(year);
 }
 
 function annuityPayment(s, n, p) {
@@ -217,7 +219,7 @@ $(document).ready(function () {
         } else {
             var payments = differentialPayment(sum, period, percent, year.id, month.id);
             var total = payments.reduce((a, b) => a + b, 0);
-            monthPay = `${payments[0]} .... ${payments[1]} ${currency.name}`;
+            monthPay = `${payments[0]} .... ${payments[payments.length - 1]} ${currency.name}`;
             overpay = `${total - sum}  ${currency.name}`;
             fullPayments = `${total} ${currency.name}`;
             $('.payment-type-text').text('Размер первого платежа');
